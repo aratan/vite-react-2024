@@ -1,0 +1,13 @@
+* {
+/*Pasar de px a rem Alt+Z*/
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+ color: rgb(0, 0, 0);
+ background-color: rgb(233, 227, 227);
+ font-size: 1rem;
+ padding: 3rem;
+}
