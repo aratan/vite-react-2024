@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
-import { Home } from './Home';
-import { About } from './About';
+import { Home } from './pages/Home';
+import { About } from './pages/About';
+import { Api } from './services/Api'; // Importa el componente Api
 
 function App() {
   const [currentPage, setCurrentPage] = useState('/');
 
   const handleNavigation = (path) => {
     setCurrentPage(path);
-    history.pushState({}, '', path);
+    window.history.pushState({}, '', path); // Usa window.history para cambiar la URL
   };
 
   // Objeto de rutas estático
   const routeComponents = {
     '/': <Home />,
     '/about': <About />,
+    '/api': <Api />, // Asocia la ruta '/api' con el componente Api
   };
 
   return (
@@ -36,7 +38,7 @@ function App() {
               cursor: 'pointer',
             }}
           >
-            {path === '/' ? 'INICIO' : 'SOBRE NOSOTROS'}
+            {path === '/' ? 'INICIO' : path === '/about' ? 'SOBRE NOSOTROS' : 'API'}
           </button>
         ))}
       </nav>
