@@ -1,28 +1,24 @@
 import React, { useState } from 'react';
 import { Home } from './pages/Home';
 import { About } from './pages/About';
-import {Api}  from './services/Api'; // Importa el componente Api
-import {Cuadrado} from './pages/Cuadrado'; // Importa la página Cuadrado
-
-
-import {Header} from './components/Header';
-import {Sidebar} from './components/Sidebar';
-import {Investor} from './pages/Investor';
-import {Manager} from './pages/Manager';
+import { Api } from './services/Api';
+import { Cuadrado } from './components/Cuadrado';
+import { Header } from './components/Header';
+import { Sidebar } from './components/Sidebar';
+import { Investor } from './pages/Investor';
+import { Manager } from './pages/Manager';
 
 function App() {
   const [currentPage, setCurrentPage] = useState('/');
 
   const handleNavigation = (path) => {
     setCurrentPage(path);
-    window.history.pushState({}, '', path); // Usa window.history para cambiar la URL
   };
 
-  // Objeto de rutas estático
   const routeComponents = {
     '/': <Home />,
     '/about': <About />,
-    '/api': <Api />, // Asocia la ruta '/api' con el componente Api
+    '/api': <Api />,
     '/cuadrado': <Cuadrado />,
     '/header': <Header />,
     '/sidebar': <Sidebar />,
@@ -31,12 +27,38 @@ function App() {
   };
 
   return (
-    <div style={{ fontFamily: 'Arial, sans-serif' }}>
-      {/* Renderizar el componente correspondiente a la página actual */}
-      {routeComponents[currentPage]}
+    <>
+      {/* Header con fondo verde */}
+      <div style={{ backgroundColor: 'green', padding: '10px', color: 'white', textAlign: 'center' }}>
+        <h1>Header - Fondo Verde</h1>
+      </div>
 
-      <nav style={{ marginTop: '20px' }}>
-        {/* Renderizar los enlaces de navegación */}
+      {/* Sidebar con fondo azul */}
+      <div style={{ display: 'flex', fontFamily: 'Arial, sans-serif' }}>
+        <div style={{ backgroundColor: 'blue', color: 'white', width: '200px', padding: '20px' }}>
+          <h2>Sidebar - Fondo Azul</h2>
+          <ul>
+            <li onClick={() => handleNavigation('/')}>Inicio</li>
+            <li onClick={() => handleNavigation('/about')}>Sobre Nosotros</li>
+            <li onClick={() => handleNavigation('/api')}>API</li>
+            <li onClick={() => handleNavigation('/cuadrado')}>Cuadrado</li>
+            <li onClick={() => handleNavigation('/header')}>Header</li>
+            <li onClick={() => handleNavigation('/sidebar')}>Sidebar</li>
+            <li onClick={() => handleNavigation('/investor')}>Inversor</li>
+            <li onClick={() => handleNavigation('/manager')}>Gestor</li>
+          </ul>
+        </div>
+
+        {/* Contenido principal */}
+        <div style={{ flex: 1, padding: '20px' }}>
+          {/* Renderizar el componente correspondiente a la página actual */}
+          {routeComponents[currentPage]}
+        </div>
+      </div>
+
+      {/* Barra de navegación */}
+      <nav style={{ marginTop: '20px', textAlign: 'center' }}>
+        {/* Renderizar los botones de navegación */}
         {Object.keys(routeComponents).map((path) => (
           <button
             key={path}
@@ -50,20 +72,18 @@ function App() {
               cursor: 'pointer',
             }}
           >
-            {path === '/' ? 'INICIO' : 
-            path === '/about' ? 'SOBRE NOSOTROS' : 
-            path === '/api' ? 'API' : 
-            path === '/cuadrado' ? 'CUADRADO' : 
-            path === '/header' ? 'Header' : 
-            path === '/sidebar' ? 'Sidebar' : 
-            path === '/investor' ? 'Investor' : 
-            path === '/manager' ? 'Manager' : ''}
-
+            {path === '/' ? 'INICIO' :
+              path === '/about' ? 'SOBRE NOSOTROS' :
+                path === '/api' ? 'API' :
+                  path === '/cuadrado' ? 'CUADRADO' :
+                    path === '/header' ? 'HEADER' :
+                      path === '/sidebar' ? 'SIDEBAR' :
+                        path === '/investor' ? 'INVERSOR' :
+                          path === '/manager' ? 'GESTOR' : ''}
           </button>
         ))}
       </nav>
-    </div>
-
+    </>
   );
 }
 
