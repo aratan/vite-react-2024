@@ -1,8 +1,12 @@
 // pages/Investor.jsx
 import React from 'react';
+import PaymentForm from '../components/PaymentForm';
 
 export function Investor() {
-  return <div>This is the Investor page content.</div>;
+  return <>This is the Investor page content.;
+
+<PaymentForm />
+</>
 }
 
 
