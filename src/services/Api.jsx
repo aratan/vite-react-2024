@@ -23,7 +23,7 @@ export function Api() {
 
   return (
     <div>
-      <h2>Información de Pokémon:</h2>
+      <h1>Información de Pokémon:</h1>
       {pokemonData ? (
         <div>
           <p>Nombre: {pokemonData.name}</p>
