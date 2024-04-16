@@ -15,10 +15,10 @@ const columns = [
   { title: 'Estado', dataIndex: 'Estado', key: 'Estado' },
 ];
 
-export function Sidebar() {
+export function Tabla() {
   return (
     <>
-      <h2>Datos tipo Excel en Sidebar</h2>
+      <h2>Datos tipo Excel </h2>
       <Table dataSource={data} columns={columns} />
     </>
   );

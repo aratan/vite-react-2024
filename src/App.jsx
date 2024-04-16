@@ -4,7 +4,7 @@ import { About } from './pages/About';
 import { Api } from './services/Api';
 import { Cuadrado } from './components/Cuadrado';
 import { Header } from './components/Header';
-import { Sidebar } from './components/Sidebar';
+import { Tabla } from './components/Tabla';
 import { Investor } from './pages/Investor';
 import { Manager } from './pages/Manager';
 
@@ -21,7 +21,7 @@ function App() {
     '/api': <Api />,
     '/cuadrado': <Cuadrado />,
     '/header': <Header />,
-    '/sidebar': <Sidebar />,
+    '/tabla': <Tabla />,
     '/investor': <Investor />,
     '/manager': <Manager />,
   };
@@ -29,13 +29,14 @@ function App() {
   return (
     <>
       {/* Header con fondo verde */}
-      <div style={{ backgroundColor: 'green', padding: '10px', color: 'white', textAlign: 'center' }}>
-        <h1>Header - Fondo Verde</h1>
+      <div style={{ backgroundColor: '#F92B89', padding: '5px', color: 'white', textAlign: 'center' }}>
+        {/* Corrección de la imagen */}
+        <img src="https://www.pampling.com//img/newfront/logo-21-en-png@2x.svg" width="200" height="75" alt="Pampling Logo" />
       </div>
 
       {/* Sidebar con fondo azul */}
       <div style={{ display: 'flex', fontFamily: 'Arial, sans-serif' }}>
-        <div style={{ backgroundColor: 'blue', color: 'white', width: '200px', padding: '20px' }}>
+        <div style={{ backgroundColor: '#000000', color: 'white', width: '200px', padding: '20px' }}>
           <h2>Sidebar - Fondo Azul</h2>
           <ul>
             <li onClick={() => handleNavigation('/')}>Inicio</li>
@@ -43,7 +44,7 @@ function App() {
             <li onClick={() => handleNavigation('/api')}>API</li>
             <li onClick={() => handleNavigation('/cuadrado')}>Cuadrado</li>
             <li onClick={() => handleNavigation('/header')}>Header</li>
-            <li onClick={() => handleNavigation('/sidebar')}>Sidebar</li>
+            <li onClick={() => handleNavigation('/tabla')}>TABLA</li>
             <li onClick={() => handleNavigation('/investor')}>Inversor</li>
             <li onClick={() => handleNavigation('/manager')}>Gestor</li>
           </ul>
@@ -77,7 +78,7 @@ function App() {
                 path === '/api' ? 'API' :
                   path === '/cuadrado' ? 'CUADRADO' :
                     path === '/header' ? 'HEADER' :
-                      path === '/sidebar' ? 'SIDEBAR' :
+                      path === '/tabla' ? 'TABLA' :
                         path === '/investor' ? 'INVERSOR' :
                           path === '/manager' ? 'GESTOR' : ''}
           </button>
